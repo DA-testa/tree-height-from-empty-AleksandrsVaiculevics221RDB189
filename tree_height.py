@@ -27,10 +27,10 @@ def main():
     
     # implement input form keyboard and from files
     while True:
-        input_methode = input("Izveleties vienu no metodem, 'i' lai rakstit skaitļus no tastatūras vai 'f' lai input no file: ")
+        input_methode = input
         if input_methode == "i":
-            n = int(input("Ievadiet'nodes' skaitu: "))
-            parents = list(map(int, input("Ievadiet vecāku numurus ar vienu atstarpi: ").split()))
+            n = int(input)
+            parents = list(map(int, input.split()))
             break
         if input_methode=="f":
             filen = input("Ievadiet faila nosaukumu: ")
@@ -51,7 +51,7 @@ def main():
 
     height = compute_height(n, parents)
 
-    print ("Koka izmers ir: " , height , "m")
+    print (height)
     return 0
 
     # let user input file name to use, don't allow file names with letter a

@@ -37,11 +37,12 @@ def main():
              input_methode = input()
         except EOFError:
             return
-        if input_methode == "I":
+        if 'I' in input_metode:
             n = int(input())
             parents = list(map(int, input().split()))
+            print(compute_height(n, parents))
             break
-        if input_methode=="F":
+        if 'F' in input_metode:
             filen = "test/"+input()
             if "a" in filen:
                 print("faila nosaukums nevar satur burtu 'a'!")
@@ -51,6 +52,7 @@ def main():
                 with open(filen) as file:
                     n = int(file.readline())
                     parents = list(map(int, file.readline().split()))
+                    print(compute_height(n, parents))
                     break
             except FileNotFoundError:
                 print("Nav tadu failu!")

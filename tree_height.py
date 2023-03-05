@@ -24,36 +24,37 @@ def compute_height(n, parents):
     return height
 
 def main():
-    
-    # implement input form keyboard and from files
-    while True:
-        input_methode = input
-        if input_methode == "i":
-            n = int(input)
-            parents = list(map(int, input.split()))
-            break
-        if input_methode=="f":
-            filen = input("Ievadiet faila nosaukumu: ")
-            if "a" in filen:
-                print("faila nosaukums nevar satur burtu 'a'!")
-                return 1
-            
-            try:
-                with open(filen) as file:
-                    n = int(file.readline())
-                    parents = list(map(int, file.readline().split()))
-                    break
-            except FileNotFoundError:
-                print("Nav tadu failu!")
-                return 1
-        else:
-            print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
-
+    n = int(input())
+    parents = list(map(int, input().split())) 
     height = compute_height(n, parents)
 
     print (height)
     return 0
 
+    # implement input form keyboard and from files
+    # while True:
+    #     input_methode = input
+    #     if input_methode == "i":
+    
+    #         break
+    #     if input_methode=="f":
+    #         filen = input("Ievadiet faila nosaukumu: ")
+    #         if "a" in filen:
+    #             print("faila nosaukums nevar satur burtu 'a'!")
+    #             return 1
+            
+    #         try:
+    #             with open(filen) as file:
+    #                 n = int(file.readline())
+    #                 parents = list(map(int, file.readline().split()))
+    #                 break
+    #         except FileNotFoundError:
+    #             print("Nav tadu failu!")
+    #             return 1
+    #     else:
+    #         print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
+
+   
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
@@ -68,3 +69,4 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
+

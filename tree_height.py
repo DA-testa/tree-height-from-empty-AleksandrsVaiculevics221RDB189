@@ -45,8 +45,8 @@ def main():
             except FileNotFoundError:
                 print("Nav tadu failu!")
                 return 1
-        else:
-            print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
+        #else:
+         #   print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
 
     height = compute_height(n, parents)
     print (height)

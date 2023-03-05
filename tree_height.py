@@ -5,28 +5,38 @@ import threading
 
 def compute_height(n, parents):
     # Write this function
-    root = -1
-    for i in range(n):
-        if parents[i] == -1:
-            root = i
-            break
-    if root == -1:
-        return 0
+    max_height = 0
     
-    q = [(root,1)]
-    height = 0
-    while q:
-        node,level = q.pop(0)
-        height = level
-        for i in range(n):
-            if parents[i] == node:
-                q.append((i, level+1))
-    return height
+    for i in range(n):
+        root = 0
+        while i !=-1:
+            root = root+1
+            i = parents[i]
+            max_height = max(max_height, root)
+    return max_height
+#         if parents[i] == -1:
+#             root = i
+#             break
+#     if root == -1:
+#         return 0
+    
+#     q = [(root,1)]
+#     height = 0
+#     while q:
+#         node,level = q.pop(0)
+#         height = level
+#         for i in range(n):
+#             if parents[i] == node:
+#                 q.append((i, level+1))
+#     return height
 
 def main():
     #implement input form keyboard and from files
     while True:
-        input_methode = input()
+        try:
+             input_methode = input()
+        except EOFError:
+            return
         if input_methode == "I":
             n = int(input())
             parents = list(map(int, input().split()))
@@ -44,13 +54,13 @@ def main():
                     break
             except FileNotFoundError:
                 print("Nav tadu failu!")
-                return 1
+                return 
         #else:
          #   print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
 
-    height = compute_height(n, parents)
-    print (height)
-    return 0
+    #height = compute_height(n, parents)
+    #print (height)
+    #return 0
 
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision

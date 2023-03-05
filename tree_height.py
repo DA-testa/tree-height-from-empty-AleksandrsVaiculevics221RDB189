@@ -2,19 +2,58 @@
 
 import sys
 import threading
-import numpy
-
 
 def compute_height(n, parents):
     # Write this function
-    max_height = 0
-    # Your code here
-    return max_height
-
+    root = -1
+    for i in range(n):
+        if parents[i] == -1:
+            root = i
+            break
+    if root == -1:
+        return 0
+    
+    q = [(root,1)]
+    height = 0
+    while q:
+        node,level = q.pop(0)
+        height = level
+        for i in range(n):
+            if parents[i] == node:
+                q.append((i, level+1))
+    return height
 
 def main():
-    # implement input form keyboard and from files
     
+    # implement input form keyboard and from files
+    while True:
+        input_methode = input("Izveleties vienu no metodem, 'i' lai rakstit skaitļus no tastatūras vai 'f' lai input no file: ")
+        if input_methode == "i":
+            n = int(input("Ievadiet'nodes' skaitu: "))
+            parents = list(map(int, input("Ievadiet vecāku numurus ar vienu atstarpi: ").split()))
+            break
+        if input_methode=="f":
+            filen = input("Ievadiet faila nosaukumu: ")
+            if "a" in filen:
+                print("faila nosaukums nevar satur burtu 'a'!")
+                return 1
+            
+            try:
+                with open(filen) as file:
+                    n = int(file.readline())
+                    parents = list(map(int, file.readline().split()))
+                    break
+            except FileNotFoundError:
+                print("Nav tadu failu!")
+                return 1
+        else:
+            print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
+
+    height = compute_height(n, parents)
+
+    print ("Koka izmers ir: " , height , "m")
+    return 0
+
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
@@ -29,5 +68,3 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-main()
-# print(numpy.array([1,2,3]))

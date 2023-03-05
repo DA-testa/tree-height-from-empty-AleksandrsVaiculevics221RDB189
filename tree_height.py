@@ -24,7 +24,7 @@ def compute_height(n, parents):
 def main():
     #implement input form keyboard and from files
     while True:
-            input_methode = input()
+            input_methode = input("Ievadiet burtu 'I' lai ievadīt datus no tastatūras, vai burtu 'F' lai ievadit datus no faila: ")
             if 'I' in input_methode:
                 n = int(input())
                 parents = list(map(int, input().split()))

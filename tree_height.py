@@ -2,6 +2,7 @@
 
 import sys
 import threading
+print("Hello! Ar šo kodu jus varēsiet uzzināt koka augumu!")
 
 def compute_height(n, parents):
     augstums = {}
@@ -26,8 +27,8 @@ def main():
     while True:
             input_methode = input("Ievadiet burtu 'I' lai ievadīt datus no tastatūras, vai burtu 'F' lai ievadit datus no faila: ")
             if 'I' in input_methode:
-                n = int(input())
-                parents = list(map(int, input().split()))
+                n = int(input("Ievadiet datu skaitu: "))
+                parents = list(map(int, input("Ievadit koka datus: ").split()))
                 print(compute_height(n, parents))
                 break
             if 'F' in input_methode:

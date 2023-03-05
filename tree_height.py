@@ -1,4 +1,4 @@
-#python3
+# python3
 
 import sys
 import threading
@@ -25,12 +25,12 @@ def main():
     #implement input form keyboard and from files
     while True:
             input_methode = input()
-            if input_methode== 'I':
+            if 'I' in input_methode:
                 n = int(input())
                 parents = list(map(int, input().split()))
                 print(compute_height(n, parents))
                 break
-            if input_methode=='F':
+            if 'F' in input_methode:
                 filen = "test/"+input()
                 
                 if "a" in filen:
@@ -68,4 +68,5 @@ sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
 #main()
+
 

@@ -30,6 +30,7 @@ def main():
                 n = int(input("Ievadiet datu skaitu: "))
                 parents = list(map(int, input("Ievadit koka datus: ").split()))
                 print(compute_height(n, parents))
+                print("Palides par darbu!")
                 break
             if 'F' in input_methode:
                 filen = "test/"+input()
@@ -43,6 +44,7 @@ def main():
                         n = int(file.readline())
                         parents = list(map(int, file.readline().split()))
                         print(compute_height(n, parents))
+                        print("Palides par darbu!")
                         break
                 except FileNotFoundError:
                     print("Nav tadu failu!")

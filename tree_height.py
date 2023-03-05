@@ -26,13 +26,13 @@ def compute_height(n, parents):
 def main():
     #implement input form keyboard and from files
     while True:
-        input_methode = input("ievadiet burtus 'I' lai ievadit no tastatūras vai 'F' lai ievadīt no faila: ")
+        input_methode = input()
         if input_methode == "I":
-            n = int(input("ievadiet 'node' skaitu: "))
-            parents = list(map(int, input("ievadiet vecaku skaitu atdalot tos ar vienu atstarpi: ").split()))
+            n = int(input())
+            parents = list(map(int, input().split()))
             break
         if input_methode=="F":
-            filen = "test/"+input("Ievadiet faila nosaukumu: ")
+            filen = "test/"+input()
             if "a" in filen:
                 print("faila nosaukums nevar satur burtu 'a'!")
                 return 1

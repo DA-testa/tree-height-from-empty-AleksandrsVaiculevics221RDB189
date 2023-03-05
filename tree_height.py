@@ -45,8 +45,8 @@ def main():
             except FileNotFoundError:
                 print("Nav tadu failu!")
                 return 1
-        else:
-            print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
+        # else:
+        #     print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
 
     height = compute_height(n, parents)
     print (height)
@@ -66,4 +66,3 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-

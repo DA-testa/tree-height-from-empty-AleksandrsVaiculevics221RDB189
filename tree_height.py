@@ -4,61 +4,50 @@ import sys
 import threading
 
 def compute_height(n, parents):
-    # Write this function
+    augstums = {}
+    def heig(f):
+        if f in augstums:
+            return augstums[f]
+        if parents[f] == -1:
+            augstums[f] = 1
+            return 1
+        height = heig(parents[f]) + 1
+        augstums[f] = height
+        return height
     max_height = 0
-    
-    for i in range(n):
-        root = 0
-        while i !=-1:
-            root = root+1
-            i = parents[i]
-            max_height = max(max_height, root)
+    for f in range(n):
+        height = heig(f)
+        max_height = max(max_height, height)
+
     return max_height
-#         if parents[i] == -1:
-#             root = i
-#             break
-#     if root == -1:
-#         return 0
-    
-#     q = [(root,1)]
-#     height = 0
-#     while q:
-#         node,level = q.pop(0)
-#         height = level
-#         for i in range(n):
-#             if parents[i] == node:
-#                 q.append((i, level+1))
-#     return height
 
 def main():
     #implement input form keyboard and from files
     while True:
-        try:
-             input_methode = input()
-        except EOFError:
-            return
-        if 'I' in input_metode:
-            n = int(input())
-            parents = list(map(int, input().split()))
-            print(compute_height(n, parents))
-            break
-        if 'F' in input_metode:
-            filen = "test/"+input()
-            if "a" in filen:
-                print("faila nosaukums nevar satur burtu 'a'!")
-                return 1
+            input_methode = input("Ievadiet burtu 'I' lai ievadit datus no tastatūras, vai burtu 'F' lai ievadīt datus no faila - test: " )
+            if input_methode== 'I':
+                n = int(input("Ievadiet datu skaitu: "))
+                parents = list(map(int, input("Ievadiet datus: ").split()))
+                print(compute_height(n, parents))
+                break
+            if input_methode=='F':
+                filen = "test/"+input("Ievadiet faila nosaukumu: ")
+                
+                if "a" in filen:
+                    print("faila nosaukums nevar satur burtu 'a'!")
+                    return 
             
-            try:
-                with open(filen) as file:
-                    n = int(file.readline())
-                    parents = list(map(int, file.readline().split()))
-                    print(compute_height(n, parents))
-                    break
-            except FileNotFoundError:
-                print("Nav tadu failu!")
-                return 
-        #else:
-         #   print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
+                try:
+                    with open(filen) as file:
+                        n = int(file.readline())
+                        parents = list(map(int, file.readline().split()))
+                        print(compute_height(n, parents))
+                        break
+                except FileNotFoundError:
+                    print("Nav tadu failu!")
+                    return 
+            else:
+                print("Nepareizs ievadu formats! Ievadiet 'i' vai 'f'!")    
 
     #height = compute_height(n, parents)
     #print (height)
@@ -79,4 +68,5 @@ sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
 #main()
+
 

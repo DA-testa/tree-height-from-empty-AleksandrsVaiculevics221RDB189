@@ -1,4 +1,4 @@
-# python3
+ python3
 
 import sys
 import threading
@@ -24,14 +24,14 @@ def compute_height(n, parents):
 def main():
     #implement input form keyboard and from files
     while True:
-            input_methode = input("Ievadiet burtu 'I' lai ievadit datus no tastatūras, vai burtu 'F' lai ievadīt datus no faila - test: " )
+            input_methode = input()
             if input_methode== 'I':
-                n = int(input("Ievadiet datu skaitu: "))
-                parents = list(map(int, input("Ievadiet datus: ").split()))
+                n = int(input())
+                parents = list(map(int, input().split()))
                 print(compute_height(n, parents))
                 break
             if input_methode=='F':
-                filen = "test/"+input("Ievadiet faila nosaukumu: ")
+                filen = "test/"+input()
                 
                 if "a" in filen:
                     print("faila nosaukums nevar satur burtu 'a'!")
@@ -68,5 +68,4 @@ sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
 #main()
-
 
